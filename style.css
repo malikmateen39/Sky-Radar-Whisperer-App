@@ -407,3 +407,41 @@
       opacity: 1;
     }
   }
+
+ /* style.css */
+/* Previous CSS remains the same, just add these new styles at the end */
+
+/* Alert banner */
+.alert-banner {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.alert-banner svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 51, 51, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+  }
+}
+
+/* Test alert button */
+#test-alert-button:hover {
+  background-color: rgba(255, 51, 51, 0.8) !important;
+}
