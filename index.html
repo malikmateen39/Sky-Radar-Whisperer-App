@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Sky Radar System</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="radar-icon" style="color: var(--primary)">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 12v-2a4.83 4.83 0 0 1 4.83 4.83m-4.83-8a8.83 8.83 0 0 1 8.83 8.83"></path>
+            <path d="M12 12a4.83 4.83 0 0 1-4.83 4.83m8.83-4.83a8.83 8.83 0 0 1-8.83 8.83"></path>
+          </svg>
+          <h1>Sky Radar System</h1>
+        </div>
+        <div class="system-info" style="font-size: 0.875rem; color: var(--muted-foreground)">
+          Sonar Aircraft Detection
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="title-section">
+        <h2>Airspace Monitoring</h2>
+        <p>Real-time aircraft detection system showing current positions and flight data</p>
+      </div>
+
+      <div class="radar-card">
+        <div class="radar-layout">
+          <div class="radar-display">
+            <!-- Main radar circle -->
+            <div class="radar-circle"></div>
+            <div class="radar-circle-inner circle-10"></div>
+            <div class="radar-circle-inner circle-20"></div>
+            <div class="radar-circle-inner circle-30"></div>
+            <div class="radar-circle-inner circle-40"></div>
+            <div class="radar-circle-inner circle-50"></div>
+            <div class="radar-circle-inner circle-60"></div>
+            <div class="radar-circle-inner circle-70"></div>
+            <div class="radar-circle-inner circle-80"></div>
+            
+            <!-- Crosshair -->
+            <div class="crosshair-h"></div>
+            <div class="crosshair-v"></div>
+            
+            <!-- Distance labels -->
+            <div class="distance-label label-25">25km</div>
+            <div class="distance-label label-50">50km</div>
+            <div class="distance-label label-75">75km</div>
+            
+            <!-- Radar sweep -->
+            <div class="radar-sweep"></div>
+            
+            <!-- Center dot -->
+            <div class="center-dot"></div>
+            
+            <!-- Aircraft will be added dynamically by JavaScript -->
+            <div id="aircraft-container"></div>
+          </div>
+          
+          <div class="control-panel">
+            <div class="panel-section">
+              <div class="panel-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="radar-icon" style="color: var(--primary)">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 12v-2a4.83 4.83 0 0 1 4.83 4.83m-4.83-8a8.83 8.83 0 0 1 8.83 8.83"></path>
+                  <path d="M12 12a4.83 4.83 0 0 1-4.83 4.83m8.83-4.83a8.83 8.83 0 0 1-8.83 8.83"></path>
+                </svg>
+                <h3>Radar Control</h3>
+              </div>
+
+              <div class="slider-container">
+                <label class="slider-label">Radar Range (km)</label>
+                <input type="range" id="range-slider" class="slider" min="50" max="300" value="100">
+                <div class="slider-labels">
+                  <span>50</span>
+                  <span id="range-value">100</span>
+                  <span>300</span>
+                </div>
+              </div>
+
+              <div class="slider-container">
+                <label class="slider-label">Sweep Speed</label>
+                <input type="range" id="speed-slider" class="slider" min="1" max="10" value="5">
+                <div class="slider-labels">
+                  <span>Slow</span>
+                  <span>Medium</span>
+                  <span>Fast</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel-section">
+              <div class="panel-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)">
+                  <path d="M12 3c.53 0 1.039.211 1.414.586s.586.884.586 1.414c0 .53-.211 1.039-.586 1.414S12.53 7 12 7s-1.039-.211-1.414-.586S10 5.53 10 5s.211-1.039.586-1.414S11.47 3 12 3zm8 4.243a3.975 3.975 0 0 1 1.172 2.829A3.977 3.977 0 0 1 20 12.9V14l1 4h-6l-1-4v-1h-4v1l-1 4H3l1-4v-1.1a3.977 3.977 0 0 1-1.172-2.828A3.975 3.975 0 0 1 4 6.244V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3 1 1 0 1 0 2 0 3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v.243zM13 18h1l1 4h-4l1-4h1z"/>
+                </svg>
+                <h3>Aircraft Details</h3>
+              </div>
+              
+              <div class="aircraft-details" id="aircraft-details">
+                <p style="color: var(--muted-foreground); font-size: 0.875rem;">
+                  Select an aircraft on the radar to view details
+                </p>
+              </div>
+            </div>
+            
+            <button id="refresh-button" class="refresh-button">Refresh Radar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        Advanced Radar Detection System © <span id="current-year"></span>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
