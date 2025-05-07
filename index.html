@@ -1,10 +1,11 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Sky Radar System</title>
+  <title>Pakistan Airspace Radar System</title>
 </head>
 <body>
   <header>
@@ -16,10 +17,10 @@
             <path d="M12 12v-2a4.83 4.83 0 0 1 4.83 4.83m-4.83-8a8.83 8.83 0 0 1 8.83 8.83"></path>
             <path d="M12 12a4.83 4.83 0 0 1-4.83 4.83m8.83-4.83a8.83 8.83 0 0 1-8.83 8.83"></path>
           </svg>
-          <h1>Sky Radar System</h1>
+          <h1>Pakistan Airspace Radar</h1>
         </div>
         <div class="system-info" style="font-size: 0.875rem; color: var(--muted-foreground)">
-          Sonar Aircraft Detection
+          PAF Monitoring System
         </div>
       </div>
     </div>
@@ -28,8 +29,17 @@
   <main>
     <div class="container">
       <div class="title-section">
-        <h2>Airspace Monitoring</h2>
+        <h2>Pakistan Airspace Monitoring</h2>
         <p>Real-time aircraft detection system showing current positions and flight data</p>
+      </div>
+
+      <div class="alert-banner" id="alert-banner" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span id="alert-text">Unauthorized aircraft detected in Pakistani airspace!</span>
       </div>
 
       <div class="radar-card">
@@ -113,6 +123,7 @@
             </div>
             
             <button id="refresh-button" class="refresh-button">Refresh Radar</button>
+            <button id="test-alert-button" class="refresh-button" style="margin-top: 0.5rem; background-color: var(--destructive)">Test Alert</button>
           </div>
         </div>
       </div>
@@ -122,10 +133,11 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        Advanced Radar Detection System © <span id="current-year"></span>
+        Pakistan Air Force Radar System © <span id="current-year"></span>
       </div>
     </div>
   </footer>
+  <audio id="alert-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3"></audio>
   <script src="script.js"></script>
 </body>
 </html>
